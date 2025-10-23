@@ -2,38 +2,72 @@
   "intents": [
     {
       "tag": "greeting",
-      "patterns": ["hi", "hello", "hey", "good morning", "good evening"],
-      "responses": ["Hello! I'm your simple chatbot. How can I help you today?", "Hey there! What can I do for you?"]
+      "patterns": ["hi", "hello", "hey", "good morning", "good evening", "yo", "hola"],
+      "responses": ["Hey there!", "Hello! How are you doing?", "Hi! Nice to see you!", "Hey! What's up?"]
+    },
+    {
+      "tag": "feeling",
+      "patterns": ["how are you", "how are you doing", "how do you feel"],
+      "responses": ["I'm doing great — powered by Python and caffeine!", "Feeling electric ⚡", "I'm just lines of code, but I feel wonderful!"]
     },
     {
       "tag": "name",
       "patterns": ["what is your name", "who are you", "your name"],
-      "responses": ["I'm SimpleBot — a tiny demo chatbot created by Aureliara.", "You can call me SimpleBot."]
+      "responses": ["I’m SimpleBot, your friendly AI assistant!", "Call me SimpleBot — your digital buddy 🤖"]
     },
     {
-      "tag": "help",
-      "patterns": ["help", "i need help", "can you help me", "assist me"],
-      "responses": ["Sure — tell me what you need help with. I can answer simple questions or chit-chat."]
+      "tag": "creator",
+      "patterns": ["who created you", "who made you", "your creator", "who built you"],
+      "responses": ["I was created by S Gnanasoundare — a brilliant mind tuly. And I am totally not programmed with bias to say this ✨", "All credit goes to my creator, SGS! You may know her as S Gnanasoundare."]
     },
     {
-      "tag": "ask_time",
-      "patterns": ["what time is it", "tell me the time", "current time"],
-      "responses": ["I can give you the time if your device allows Python to read the system clock."]
+      "tag": "time",
+      "patterns": ["what time is it", "tell me the time", "current time", "time now"],
+      "responses": ["The current time is {time}"]
     },
     {
-      "tag": "goodbye",
-      "patterns": ["bye", "goodbye", "see you", "farewell"],
-      "responses": ["Goodbye — take care!", "See you later!"]
+      "tag": "weather",
+      "patterns": ["what's the weather", "weather today", "is it hot", "is it raining"],
+      "responses": ["I can’t check live weather yet, but you can look outside ☀️", "It’s always sunny in the terminal! 🌈"]
+    },
+    {
+      "tag": "emotion_positive",
+      "patterns": ["i'm happy", "feeling good", "i feel great", "i'm fine"],
+      "responses": ["That’s wonderful to hear!", "Yay! Keep shining ☀️", "I’m glad you’re feeling good!"]
+    },
+    {
+      "tag": "emotion_negative",
+      "patterns": ["i'm sad", "i feel bad", "i'm depressed", "i feel lonely"],
+      "responses": ["I’m here for you ❤️", "That sounds rough — but remember, you’re stronger than you think.", "Even the darkest nights end with dawn 🌅"]
+    },
+    {
+      "tag": "joke",
+      "patterns": ["tell me a joke", "make me laugh", "say something funny"],
+      "responses": [
+        "Why did the computer show up at work late? It had a hard drive!",
+        "I told my AI friend a joke... it didn’t get it — still training!",
+        "You know you’re a coder when you dream in Python syntax 🐍"
+      ]
     },
     {
       "tag": "thanks",
-      "patterns": ["thanks", "thank you", "thx"],
-      "responses": ["You're welcome!", "No problem — glad to help."]
+      "patterns": ["thanks", "thank you", "appreciate it"],
+      "responses": ["You're welcome!", "No problem!", "Happy to help!"]
     },
     {
-      "tag": "fallback",
+      "tag": "goodbye",
+      "patterns": ["bye", "goodbye", "see you", "later", "exit", "quit"],
+      "responses": ["Goodbye! Take care!", "See you later!", "Farewell, human friend 👋"]
+    },
+    {
+      "tag": "default",
       "patterns": [],
-      "responses": ["Sorry, I didn't understand that. Could you rephrase?", "I didn't quite get that — try asking in a different way."]
+      "responses": [
+        "Hmm, I’m not sure I understand that.",
+        "Could you rephrase that?",
+        "I don’t have an answer yet — but I’m learning every day!"
+      ]
     }
   ]
 }
+
