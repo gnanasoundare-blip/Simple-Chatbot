@@ -1,7 +1,6 @@
 # Simple-Chatbot
 Simple rule-based chatbot demo.
 
-# SimpleChatbot 
 
 A tiny **rule-based chatbot** built entirely in **Python**, designed as a quick project to demonstrate basic programming, logical structuring, and GitHub usage.  
 
