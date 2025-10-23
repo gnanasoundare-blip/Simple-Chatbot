@@ -33,5 +33,26 @@ A tiny **rule-based chatbot** built entirely in **Python**, designed as a quick 
    ```bash
    python chatbot.py
 
+## Some prompts you can try:
+"hi", "hello", "hey", "good morning", "good evening", "yo", "hola", 
+
+"how are you", "how are you doing", "how do you feel", 
+
+"what is your name", "who are you", "your name",
+
+"who created you", "who made you", "your creator", "who built you",
+
+"what's the weather", "weather today", "is it hot", "is it raining",
+
+"i'm happy", "feeling good", "i feel great", "i'm fine", 
+
+"i'm sad", "i feel bad", "i'm depressed", "i feel lonely",
+
+"tell me a joke", "make me laugh", "say something funny",
+
+"thanks", "thank you", "appreciate it",
+
+"bye", "goodbye", "see you", "later", "exit", "quit"
+
 
 This repo demonstrates foundational skills: Python scripting, JSON-driven intent structure, and GitHub project setup. It's small by design — ready to extend with ML or a web UI.
