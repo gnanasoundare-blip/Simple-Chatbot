@@ -1,0 +1,39 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["hi", "hello", "hey", "good morning", "good evening"],
+      "responses": ["Hello! I'm your simple chatbot. How can I help you today?", "Hey there! What can I do for you?"]
+    },
+    {
+      "tag": "name",
+      "patterns": ["what is your name", "who are you", "your name"],
+      "responses": ["I'm SimpleBot — a tiny demo chatbot created by Aureliara.", "You can call me SimpleBot."]
+    },
+    {
+      "tag": "help",
+      "patterns": ["help", "i need help", "can you help me", "assist me"],
+      "responses": ["Sure — tell me what you need help with. I can answer simple questions or chit-chat."]
+    },
+    {
+      "tag": "ask_time",
+      "patterns": ["what time is it", "tell me the time", "current time"],
+      "responses": ["I can give you the time if your device allows Python to read the system clock."]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["bye", "goodbye", "see you", "farewell"],
+      "responses": ["Goodbye — take care!", "See you later!"]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["thanks", "thank you", "thx"],
+      "responses": ["You're welcome!", "No problem — glad to help."]
+    },
+    {
+      "tag": "fallback",
+      "patterns": [],
+      "responses": ["Sorry, I didn't understand that. Could you rephrase?", "I didn't quite get that — try asking in a different way."]
+    }
+  ]
+}
