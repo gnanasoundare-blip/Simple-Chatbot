@@ -2,7 +2,9 @@
 Simple rule-based chatbot demo.
 
 
-A tiny **rule-based chatbot** built entirely in **Python**, designed as a quick project to demonstrate basic programming, logical structuring, and GitHub usage.  
+A tiny **rule-based chatbot** built entirely in **Python**, designed as a quick project to demonstrate basic programming, logical structuring, and GitHub usage. 
+
+(This repo demonstrates foundational skills: Python scripting, JSON-driven intent structure, and GitHub project setup. It's small by design — ready to extend with ML or a web UI.)
 
 ---
 
@@ -55,4 +57,4 @@ A tiny **rule-based chatbot** built entirely in **Python**, designed as a quick 
 "bye", "goodbye", "see you", "later", "exit", "quit"
 
 
-This repo demonstrates foundational skills: Python scripting, JSON-driven intent structure, and GitHub project setup. It's small by design — ready to extend with ML or a web UI.
+
