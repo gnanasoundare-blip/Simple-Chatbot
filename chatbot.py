@@ -6,49 +6,66 @@ No external packages required.
 
 import json
 import random
-import datetime
-import time
-from tqdm import tqdm
-from colorama import Fore, Style, init
-
-init(autoreset=True)  # Initialize colorama
+import re
+from datetime import datetime
 
 # Load intents
-with open('intents.json', 'r') as file:
-    data = json.load(file)
+with open("intents.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
 
-def typing_effect(text, delay=0.02):
-    """Creates a typing animation for bot responses."""
-    for char in text:
-        print(char, end='', flush=True)
-        time.sleep(delay)
-    print()  # New line after text
+# Build simple pattern map: lowercase + simple normalization
+pattern_map = []
+for intent in data["intents"]:
+    for patt in intent.get("patterns", []):
+        # create a compiled regex for word boundaries to avoid partial matches
+        regex = re.compile(r"\b" + re.escape(patt.lower()) + r"\b")
+        pattern_map.append((regex, intent["tag"]))
+# If some intents have no patterns (like fallback) they remain only by tag
 
-def match_intent(user_input):
-    """Tries to find the best intent match for a given user input."""
-    user_input = user_input.lower()
-    for intent in data['intents']:
-        for pattern in intent['patterns']:
-            if pattern in user_input:
-                return intent
-    return next(i for i in data['intents'] if i['tag'] == 'default')
+def find_intent(user_input):
+    s = user_input.lower()
+    # exact pattern matching
+    for regex, tag in pattern_map:
+        if regex.search(s):
+            return tag
+    # more flexible keyword checks
+    # fallback rules:
+    if any(w in s for w in ["time", "clock", "hour"]):
+        return "ask_time"
+    if any(w in s for w in ["help", "assist", "support"]):
+        return "help"
+    if any(w in s for w in ["name", "who are you"]):
+        return "name"
+    if any(w in s for w in ["bye", "goodbye", "see you"]):
+        return "goodbye"
+    if any(w in s for w in ["thanks", "thank you", "thx"]):
+        return "thanks"
+    return "fallback"
 
-print(Fore.CYAN + "SimpleBot (type 'quit' or 'exit' to stop)\n")
+def get_response(tag, user_input):
+    # return random response for tag
+    for intent in data["intents"]:
+        if intent["tag"] == tag:
+            # special-case the time intent
+            if tag == "ask_time":
+                now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                return f"The current system time is {now}."
+            return random.choice(intent["responses"])
+    return "Hmm."
 
-while True:
-    user_input = input(Fore.PURPLE + "You: " + Style.RESET_ALL).strip().lower()
-    if user_input in ['quit', 'exit']:
-        typing_effect(Fore.CYAN + "SimpleBot: Goodbye! Have a great day! 👋")
-        break
+def main():
+    print("SimpleBot (type 'quit' or 'exit' to stop)\n")
+    while True:
+        user = input("You: ").strip()
+        if not user:
+            continue
+        if user.lower() in ("quit", "exit"):
+            print("SimpleBot: Bye!")
+            break
+        tag = find_intent(user)
+        resp = get_response(tag, user)
+        print("SimpleBot:", resp)
 
-    intent = match_intent(user_input)
-    response = random.choice(intent['responses'])
-
-    # Insert dynamic time if applicable
-    if '{time}' in response:
-        current_time = datetime.datetime.now().strftime("%I:%M %p")
-        response = response.replace("{time}", current_time)
-
-    # Animated colored bot response
-    typing_effect(Fore.BLUE + "SimpleBot: " + response)
+if __name__ == "__main__":
+    main()
 
