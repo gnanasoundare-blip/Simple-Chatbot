@@ -51,7 +51,10 @@ def get_response(tag, user_input):
                 now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 return f"The current system time is {now}."
             return random.choice(intent["responses"])
-    return "Hmm."
+    for intent in data["intents"]:
+        if intent["tag"] == "fallback":
+            return random.choice(intent["responses"])
+
 
 def main():
     print("SimpleBot (type 'quit' or 'exit' to stop)\n")
